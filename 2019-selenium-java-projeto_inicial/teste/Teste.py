@@ -1,28 +1,39 @@
-
+import unittest
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys  # Correção: Keys com 'K' maiúsculo
+# Correção: Keys com 'K' maiúsculo
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
 
-try:
-    # Inicializa o driver do Chrome
-    driver = webdriver.Chrome()
-    # Abre o site do Google
-    driver.get("https://www.google.com.br")
-    
-    # Aguarda até que um elemento específico esteja presente na página (exemplo: o campo de pesquisa)
-    # Aqui estamos usando o título da página como condição para a espera.
-    # WebDriverWait(driver, 10000).until(EC.title_contains("Google"))
-    time.sleep(500)
-    
-    # Adicione uma lógica adicional aqui, se necessário.
-    
-finally:
-    # Garante que o driver será fechado
-    driver.quit()
+class TesteSelenium(unittest.TestCase):
+
+    def setUp(self):
+        # Inicializa o driver do Chrome
+        options = webdriver.ChromeOptions()
+        
+        # Maximizar a janela do navegador
+        options.add_argument("--incognito")
+        options.add_argument("--start-maximized")
+        self.driver = webdriver.Chrome(options=options)
+
+    def test_google_search(self):
+
+        driver = self.driver
+        driver.get("https://www.google.com.br")
+
+        # Aguarda até que o título da página contenha "Google"
+        time.sleep(5)
+
+        # Você pode adicionar mais lógica aqui para interagir com a página
+        print("Página carregada corretamente")
+
+    def tearDown(self):
+        # Garante que o driver será fechado
+        self.driver.quit()
 
 
-    
+if __name__ == "__main__":
+    unittest.main()
