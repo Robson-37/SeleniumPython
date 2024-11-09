@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import pyautogui
 
 
 class TesteSelenium(unittest.TestCase):
@@ -28,7 +29,7 @@ class TesteSelenium(unittest.TestCase):
         time.sleep(5)
 
         # Você pode adicionar mais lógica aqui para interagir com a página
-        print("Página carregada corretamente")
+        #print("Página carregada corretamente")
 
     def tearDown(self):
         # Garante que o driver será fechado
