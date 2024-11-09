@@ -1,6 +1,6 @@
 import unittest
 from selenium import webdriver
-# Correção: Keys com 'K' maiúsculo
+
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -8,6 +8,14 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import pyautogui
 
+def tira_print(imagem: str ='..//img//print.png'):
+
+        try:
+            captura = pyautogui.screenshot()
+            captura.save(imagem)
+            print(f'Print salvo como {imagem}')
+        except Exception as e:
+            print(f'Ocorreu um erro: {e}')
 
 class TesteSelenium(unittest.TestCase):
 
@@ -16,7 +24,7 @@ class TesteSelenium(unittest.TestCase):
         options = webdriver.ChromeOptions()
         
         # Maximizar a janela do navegador
-        options.add_argument("--incognito")
+        
         options.add_argument("--start-maximized")
         self.driver = webdriver.Chrome(options=options)
 
@@ -24,10 +32,10 @@ class TesteSelenium(unittest.TestCase):
 
         driver = self.driver
         driver.get("https://www.google.com.br")
-
+        tira_print()
         # Aguarda até que o título da página contenha "Google"
         time.sleep(5)
-
+ 
         # Você pode adicionar mais lógica aqui para interagir com a página
         #print("Página carregada corretamente")
 
