@@ -6,7 +6,9 @@ from selenium.webdriver.support import expected_conditions as EC  # Importa cond
 import pyautogui  # Importa a biblioteca pyautogui para capturas de tela e simulação de teclado.
 import time  # Importa a biblioteca time para manipulação de tempo.
 
+    
 class TesteSelenium(unittest.TestCase):  # Define uma classe de teste que herda de unittest.TestCase.
+
     def setUp(self):  # Método chamado antes de cada teste ser executado.
         options = webdriver.ChromeOptions()  # Cria uma instância de opções para o Chrome.
         options.add_argument("--start-maximized")  # Adiciona o argumento para iniciar o Chrome maximizado.
@@ -21,7 +23,7 @@ class TesteSelenium(unittest.TestCase):  # Define uma classe de teste que herda 
     def test_acessando_a_pagina(self):  # Método do teste principal para acessar uma página.
         self.driver.get("https://www.google.com.br")  # Abre a URL do Google.
         time.sleep(3)  # Pausa o teste por 2 segundos para permitir que a página carregue.
-        self._capturar()  # Captura a tela após o carregamento da página.
+        self._capturar()# Captura a tela após o carregamento da página.
 
         try:  # Inicia um bloco de tentativa para capturar exceções.
             input_element = self._esperar_elemento(By.ID, "APjFqb")  # Espera até que o elemento de entrada esteja presente no DOM.
