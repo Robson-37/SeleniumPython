@@ -1,51 +1,42 @@
-import unittest  # Importa o módulo unittest para criar e executar testes
-from selenium import webdriver  # Importa o módulo webdriver do Selenium para automação de navegadores
-from selenium.webdriver.common.keys import Keys  # Importa as chaves do teclado do Selenium
-from selenium.webdriver.common.by import By  # Importa a classe By para localizar elementos
-from selenium.webdriver.support.ui import WebDriverWait  # Importa WebDriverWait para esperar por elementos
-from selenium.webdriver.support import expected_conditions as EC  # Importa condições esperadas para verificar elementos
-import time  # Importa o módulo time para manipulação de tempo
-import pyautogui  # Importa a biblioteca pyautogui para controle da interface gráfica
-import pyscreeze  # Importa a biblioteca pyscreeze, útil para capturas de tela
+import unittest  # Importa o módulo unittest para realizar testes unitários.
+from selenium import webdriver  # Importa a classe webdriver do Selenium para controlar o navegador.
+from selenium.webdriver.common.by import By  # Importa a classe By para localizar elementos HTML.
+from selenium.webdriver.support.ui import WebDriverWait  # Importa WebDriverWait para aguardar a presença de elementos.
+from selenium.webdriver.support import expected_conditions as EC  # Importa condições esperadas para interação com elementos.
+import pyautogui  # Importa a biblioteca pyautogui para capturas de tela e simulação de teclado.
+import time  # Importa a biblioteca time para manipulação de tempo.
 
-class TesteSelenium(unittest.TestCase):  # Define a classe de teste como uma subclasse de unittest.TestCase
-    def setUp(self):  # Método que será executado antes de cada teste
-        options = webdriver.ChromeOptions()  # Cria um objeto de opções para o Chrome
-        options.add_argument("--start-maximized")  # Adiciona argumento para iniciar o Chrome maximizado
-        self.driver = webdriver.Chrome(options=options)  # Inicializa o driver do Chrome com as opções definidas
-    
-    def test_acessando_a_pagina(self):  # Método de teste para acessar a página
-        self.driver.get("https://www.google.com.br")  # Abre a URL do Google no navegador
-        time.sleep(2)  # Pausa por 2 segundos para garantir que a página carregue
-        self.capturar()  # Chama o método para capturar a tela
-        #self.assertIn("Google", self.driver.title)  # Verifica se "Google" está no título da página
-        #WebDriverWait(self.driver, 10).until(EC.title_contains("Google"))  # Espera até que o título contenha "Google"
-        
-        try:  # Inicia um bloco de exceção para capturar erros
-            # Espera até que o elemento com ID "APjFqb" esteja presente no DOM
-            input_element = WebDriverWait(self.driver, 10).until(
-        EC.presence_of_element_located((By.ID, "APjFqb")))  # Localiza o elemento pelo ID "APjFqb"
+class TesteSelenium(unittest.TestCase):  # Define uma classe de teste que herda de unittest.TestCase.
+    def setUp(self):  # Método chamado antes de cada teste ser executado.
+        options = webdriver.ChromeOptions()  # Cria uma instância de opções para o Chrome.
+        options.add_argument("--start-maximized")  # Adiciona o argumento para iniciar o Chrome maximizado.
+        self.driver = webdriver.Chrome(options=options)  # Inicializa o driver do Chrome com as opções definidas.
 
-            # Agora podemos interagir com o elemento
-            input_element.send_keys("Python")  # Envia a palavra "Python" para o campo de entrada
-            time.sleep(2)  # Pausa por 2 segundos
-            self.capturar()  # Captura a tela novamente
-            pyautogui.press('enter')  # Pressiona a tecla 'Enter' usando pyautogui
+    def _esperar_elemento(self, by, value, timeout=10):  # Método para esperar a presença de um elemento.
+        return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((by, value)))  # Aguarda até que o elemento esteja presente.
 
-        except Exception as e:  # Captura qualquer exceção ocorrida
-            print(f"Ocorreu um erro: {e}")  # Imprime a mensagem de erro no console
-    
-        time.sleep(3)  # Pausa por 3 segundos antes de capturar a tela novamente
-        self.capturar()  # Captura a tela uma última vez
+    def _capturar(self):  # Método para tirar uma captura de tela.
+        pyautogui.screenshot().save('C:/Users/rpersilv/OneDrive - NTT DATA EMEAL/Documents/GitHub/SeleniumPython/2019-selenium-java-projeto_inicial/img/'f'screenshot_{time.strftime("%Y-%m-%d_%H-%M-%S")}.png')  # Faz uma captura de tela e a salva com um timestamp no nome.
 
+    def test_acessando_a_pagina(self):  # Método do teste principal para acessar uma página.
+        self.driver.get("https://www.google.com.br")  # Abre a URL do Google.
+        time.sleep(3)  # Pausa o teste por 2 segundos para permitir que a página carregue.
+        self._capturar()  # Captura a tela após o carregamento da página.
 
-    def capturar(self):  # Método para capturar a tela
-        self.capimagem = pyautogui.screenshot()  # Captura a tela atual
-        # Salva a captura de tela com um nome que inclui a data e hora atuais
-        self.capimagem.save('C:/Users/rpersilv/OneDrive - NTT DATA EMEAL/Documents/GitHub/SeleniumPython/2019-selenium-java-projeto_inicial/img/'f'screenshot_{time.strftime("%Y-%m-%d_%H-%M-%S")}.png') 
+        try:  # Inicia um bloco de tentativa para capturar exceções.
+            input_element = self._esperar_elemento(By.ID, "APjFqb")  # Espera até que o elemento de entrada esteja presente no DOM.
+            input_element.send_keys("Python")  # Envia o texto "Python" para o campo de entrada.
+            time.sleep(2)  # Pausa por 2 segundos para permitir que o texto seja inserido.
+            self._capturar()  # Captura a tela após a inserção do texto.
+            pyautogui.press('enter')  # Simula a pressão da tecla Enter.
+        except Exception as e:  # Captura qualquer exceção que ocorra.
+            print(f"Ocorreu um erro: {e}")  # Imprime a mensagem de erro.
 
-    def tearDown(self):  # Método que será executado após cada teste
-        self.driver.quit()  # Fecha o navegador e encerra a sessão do driver
+        time.sleep(3)  # Pausa por 3 segundos para esperar o resultado da pesquisa.
+        self._capturar()  # Captura a tela após a pesquisa.
 
-if __name__=='__main__':  # Verifica se o arquivo é executado como programa principal
-    unittest.main()  # Executa os testes definidos na classe
+    def tearDown(self):  # Método chamado após cada teste ser executado.
+        self.driver.quit()  # Fecha o driver do navegador e encerra a sessão.
+
+if __name__ == '__main__':  # Verifica se o script está sendo executado diretamente.
+    unittest.main()  # Executa todos os testes definidos na classe de teste.
