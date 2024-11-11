@@ -18,7 +18,7 @@ class CriarCliente(unittest.TestCase):
     
     def test_acesso_a_simplifique(self):
         self.driver.get("https://simalog2.simplifiquevivoemp.com.br/")
-        time.sleep(5)
+        time.sleep(15)
         
     def tearDown(self):
         self.driver.quit()
