@@ -1,11 +1,14 @@
 import pyautogui
-
+import time
 
 def click():
-
+    pass
 def check_screen():
-    pyautogui.locateOnScreen('image.png', confidence=0.7)
-    
-def main():
+    time.sleep(5)
+    print(pyautogui.locateOnScreen('image2.png', confidence=0.7))
 
-main()
+def main():
+    check_screen()
+
+if __name__ == "__main__":
+    main()
