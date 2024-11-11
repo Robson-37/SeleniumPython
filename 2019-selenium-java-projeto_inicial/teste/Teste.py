@@ -34,7 +34,7 @@ class TesteSelenium(unittest.TestCase):  # Define uma classe de teste que herda 
         except Exception as e:  # Captura qualquer exceção que ocorra.
             print(f"Ocorreu um erro: {e}")  # Imprime a mensagem de erro.
 
-        time.sleep(3)  # Pausa por 3 segundos para esperar o resultado da pesquisa.
+        time.sleep(3)  # Pausa por 3 segundos    para esperar o resultado da pesquisa.
         self._capturar()  # Captura a tela após a pesquisa.
 
     def tearDown(self):  # Método chamado após cada teste ser executado.
