@@ -14,7 +14,7 @@ class TestIntegracaoVivocorp(unittest.TestCase):
     def test_visibilidade_componentes(self):
         """Teste de Visibilidade do Componente 'Integração Vivocorp'."""
         # Passo 1: Logar no sistema SFA
-        self.driver.get("url_do_sistema_sf")
+        self.driver.get("url_do_sistema_sfe")
         self.driver.find_element(By.ID, "username").send_keys("usuario_teste")
         self.driver.find_element(By.ID, "password").send_keys("senha_teste")
         self.driver.find_element(By.ID, "login_button").click()
