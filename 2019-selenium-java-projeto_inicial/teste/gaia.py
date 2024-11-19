@@ -8,15 +8,17 @@ class TestIntegracaoVivocorp(unittest.TestCase):
 
     def setUp(self):
         # Inicializa o driver do navegador (substitua o caminho do ChromeDriver conforme necessário)
-        self.driver = webdriver.Chrome(executable_path='caminho/do/chromedriver')
-        self.driver.implicitly_wait(10)
+        options = webdriver.ChromeOptions()  # Cria uma instância de opções para o Chrome.
+        options.add_argument("--start-maximized")  # Adiciona o argumento para iniciar o Chrome maximizado.
+        self.driver = webdriver.Chrome(options=options)
 
     def test_visibilidade_componentes(self):
         """Teste de Visibilidade do Componente 'Integração Vivocorp'."""
         # Passo 1: Logar no sistema SFA
-        self.driver.get("url_do_sistema_sfe")
-        self.driver.find_element(By.ID, "username").send_keys("usuario_teste")
-        self.driver.find_element(By.ID, "password").send_keys("senha_teste")
+        self.driver.get("https://vivo--preprod.sandbox.lightning.force.com/")
+        time.sleep(10)
+        self.driver.find_element(By.ID, "username").send_keys("80728243")
+        self.driver.find_element(By.ID, "password").send_keys("Vivo@2023!@")
         self.driver.find_element(By.ID, "login_button").click()
 
         # Passo 2: Navegar até a seção de oportunidades
@@ -75,7 +77,7 @@ class TestIntegracaoVivocorp(unittest.TestCase):
         self.test_funcionamento_botao_envio_cliente()  # Garantir que o cliente foi enviado
 
         # Acessar o sistema Vivocorp para verificar dados do cliente
-        self.driver.get("url_do_vivocorp")
+        self.driver.get("http://vivocorp-preprod-qa.redecorp.br/vivocorp_oui")
         # Aqui você precisaria adicionar o código para garantir que verificar os dados no Vivocorp
         # Exemplo:
         # cliente_dados = self.driver.find_element(By.XPATH, "//table[contains(@class, 'clientes')]")
