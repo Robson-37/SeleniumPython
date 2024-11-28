@@ -17,10 +17,13 @@ class TesteIntegracaoVivocorp(unittest.TestCase):
         self.driver = webdriver.Chrome(options=options)  # Método para realizar o login
         time.sleep(5)
 
-    def login(self):
+    def test_login(self):
+        self.driver.get("https://vivo--preprod.sandbox.lightning.force.com/")
+        time.sleep(5)
         # Lógica de login (substitua pelos seletores corretos)
-        self.driver.find_element(By.NAME, "username").send_keys("SEU_USUARIO")
-        self.driver.find_element(By.NAME, "password").send_keys("SUA_SENHA")
+        self.driver.find_element(By.NAME, "username").send_keys("80728243")
+        self.driver.find_element(By.NAME, "password").send_keys("Vivo@2023!@")
+        time.sleep(5)
         self.driver.find_element(By.NAME, "login").click()  # Botão de login
 
         # Aguarda 2 segundos para garantir que a página carregue

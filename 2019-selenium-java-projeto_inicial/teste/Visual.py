@@ -16,16 +16,17 @@ class TestIntegracaoVivocorp(unittest.TestCase):
         """Teste de Visibilidade do Componente 'Integração Vivocorp'."""
         # Passo 1: Logar no sistema SFA
         self.driver.get("https://vivo--preprod.sandbox.lightning.force.com/")
-        time.sleep(5)
+        time.sleep(3)
         self.driver.find_element(By.ID, "details-button").click()
-        time.sleep(5)
+        time.sleep(2)
         self.driver.find_element(By.ID, "proceed-link").click()
-        time.sleep(4)
+        time.sleep(2)
 
         self.driver.find_element(By.ID, "username").send_keys("80728243")
         self.driver.find_element(By.ID, "password").send_keys("Vivo@2023!@")
-        time.sleep(5)
-        self.driver.find_element(By.ID, "login_button").click()
+        time.sleep(3)
+        self.driver.find_element(By.CLASS_NAME, "btn-submit").click()
+        time.sleep(3)
 
     def tearDown(self):
         # Fecha o navegador após os testes
