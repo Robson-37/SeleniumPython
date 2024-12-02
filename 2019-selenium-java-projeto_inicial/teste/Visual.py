@@ -9,7 +9,8 @@ class TestIntegracaoVivocorp(unittest.TestCase):
     def setUp(self):
         # Inicializa o driver do navegador (substitua o caminho do ChromeDriver conforme necessário)
         options = webdriver.ChromeOptions()  # Cria uma instância de opções para o Chrome.
-        options.add_argument("--start-maximized")  # Adiciona o argumento para iniciar o Chrome maximizado.
+        options.add_argument("--start-maximized") 
+        options.add_argument("--headless=new") # Adiciona o argumento para iniciar o Chrome maximizado.
         self.driver = webdriver.Chrome(options=options)
 
     def test_visibilidade_componentes(self):
