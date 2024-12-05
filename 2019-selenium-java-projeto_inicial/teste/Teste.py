@@ -18,23 +18,23 @@ class TesteSelenium(unittest.TestCase):  # Define uma classe de teste que herda 
         return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((by, value)))  # Aguarda até que o elemento esteja presente.
 
     def _capturar(self):  # Método para tirar uma captura de tela.
-        pyautogui.screenshot().save('C:/Users/rpersilv/OneDrive - NTT DATA EMEAL/Documents/GitHub/SeleniumPython/2019-selenium-java-projeto_inicial/img/'f'screenshot_{time.strftime("%Y-%m-%d_%H-%M-%S")}.png')  # Faz uma captura de tela e a salva com um timestamp no nome.
+        pyautogui.screenshot().save('C:/Users/rpersilv/OneDrive - NTT DATA EMEAL/Documents/GitHub/SeleniumPython/2019-selenium-java-projeto_inicial/img/'f'print_{time.strftime("%d-%m-%Y_%H-%M-%S")}.png')  # Faz uma captura de tela e a salva com um timestamp no nome.
 
     def test_acessando_a_pagina(self):  # Método do teste principal para acessar uma página.
         self.driver.get("https://www.google.com.br")  # Abre a URL do Google.
-        time.sleep(3)  # Pausa o teste por 2 segundos para permitir que a página carregue.
+        time.sleep(2)  # Pausa o teste por 2 segundos para permitir que a página carregue.
         self._capturar()# Captura a tela após o carregamento da página.
 
         try:  # Inicia um bloco de tentativa para capturar exceções.
             input_element = self._esperar_elemento(By.ID, "APjFqb")  # Espera até que o elemento de entrada esteja presente no DOM.
             input_element.send_keys("Python")  # Envia o texto "Python" para o campo de entrada.
-            time.sleep(2)  # Pausa por 2 segundos para permitir que o texto seja inserido.
+            time.sleep(1)  # Pausa por 2 segundos para permitir que o texto seja inserido.
             self._capturar()  # Captura a tela após a inserção do texto.
             pyautogui.press('enter')  # Simula a pressão da tecla Enter.
         except Exception as e:  # Captura qualquer exceção que ocorra.
             print(f"Ocorreu um erro: {e}")  # Imprime a mensagem de erro.
 
-        time.sleep(3)  # Pausa por 3 segundos    para esperar o resultado da pesquisa.
+        time.sleep(1)  # Pausa por 3 segundos    para esperar o resultado da pesquisa.
         self._capturar()  # Captura a tela após a pesquisa.
 
     def tearDown(self):  # Método chamado após cada teste ser executado.

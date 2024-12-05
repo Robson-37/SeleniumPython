@@ -1,0 +1,45 @@
+
+==============QA > Testes funcionais a partir de HU=================================================
+
+Lista de Testes Funcionais para o Cenário 1
+
+# Verificar condição inicial de ordem em voo
+
+
+Confirmar que existe uma ordem com status "Enviado" (em voo) sem portabilidade.
+
+
+# Testar cancelamento total da ordem via GPS
+
+
+Realizar o cancelamento total da ordem via GPS.
+
+Confirmar que o status da ordem foi alterado para "Cancelado".
+
+
+# Verificar atualização de status dos itens da ordem
+
+
+Confirmar que todos os itens da ordem também mudaram para o status "Cancelado".
+
+
+# Testar preenchimento do motivo de cancelamento
+
+
+Preencher o campo "Motivo de Cancelamento" durante o cancelamento via GPS.
+
+Confirmar que o motivo foi corretamente preenchido e enviado.
+
+
+# Verificar notificação para o Simplifique
+
+
+Confirmar que o Simplifique foi notificado sobre o cancelamento da ordem.
+
+Verificar se a informação de "Motivo de Cancelamento" foi absorvida corretamente pelo Simplifique.
+
+
+# Testar resposta correta do sistema após cancelamento
+
+
+Aguardar a resposta do sistema após o cancelamento e verificar se o retorno está conforme esperado (status "Cancelado" e campo "Motivo de Cancelamento" preenchido).

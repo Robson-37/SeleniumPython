@@ -1,0 +1,181 @@
+
+============================QA > Testes funcionais a partir de requisito=============================
+
+Lista de Testes Funcionais para o Cenário 1
+
+Teste 1: Verificar Ordem com Status "Enviado"
+Objetivo: Confirmar que existe uma ordem com status "Enviado" (em voo) sem portabilidade.
+
+
+Cenário:  
+
+
+Estado Inicial: Sistema com ordens existentes; pelo menos uma com status "Enviado" e sem portabilidade.
+
+Ações:  
+Acessar a lista de ordens no sistema.
+
+
+Condições: Pelo menos uma ordem deve estar com status "Enviado" e não ter portabilidade.
+
+Resultado Esperado: A ordem "Enviado" é exibida na lista, atendendo às condições.
+
+
+
+Teste 2: Cancelamento Total da Ordem via GPS
+Objetivo: Testar cancelamento total da ordem via GPS.
+
+
+Cenário:  
+
+
+Estado Inicial: Existe uma ordem com status "Enviado" (em voo) sem portabilidade.
+
+Ações:  
+Acessar a ordem no sistema.
+
+Iniciar o cancelamento da ordem via GPS.
+
+
+Condições: Ordem com status "Enviado".
+
+Resultado Esperado: A ordem é cancelada com sucesso.
+
+
+
+Teste 3: Verificar Alteração de Status da Ordem
+Objetivo: Confirmar que o status da ordem foi alterado para "Cancelado".
+
+
+Cenário:  
+
+
+Estado Inicial: Ordem foi cancelada via GPS.
+
+Ações:  
+Acessar a lista de ordens ou detalhes da ordem cancelada.
+
+
+Condições: Ordem deve ter sido cancelada.
+
+Resultado Esperado: O status da ordem exibe "Cancelado".
+
+
+
+Teste 4: Verificação de Atualização de Status dos Itens
+Objetivo: Verificar atualização de status dos itens da ordem.
+
+
+Cenário:  
+
+
+Estado Inicial: Ordem cancelada.
+
+Ações:  
+Acessar os detalhes da ordem cancelada.
+
+
+Condições: A ordem contém itens.
+
+Resultado Esperado: Todos os itens da ordem exibem o status "Cancelado".
+
+
+
+Teste 5: Preenchimento do Motivo de Cancelamento
+Objetivo: Testar preenchimento do campo "Motivo de Cancelamento" durante o cancelamento via GPS.
+
+
+Cenário:  
+
+
+Estado Inicial: Ordem é cancelada via GPS.
+
+Ações:  
+Durante o cancelamento, preencher o campo "Motivo de Cancelamento".
+
+Confirmar o cancelamento.
+
+
+Condições: O campo "Motivo de Cancelamento" deve ser preenchido.
+
+Resultado Esperado: O motivo de cancelamento é salvo e visível na história da ordem.
+
+
+
+Teste 6: Notificação para o Simplifique
+Objetivo: Verificar notificação para o Simplifique sobre o cancelamento da ordem.
+
+
+Cenário:  
+
+
+Estado Inicial: Ordem cancelada.
+
+Ações:  
+Acessar o sistema Simplifique.
+
+Verificar se a notificação sobre o cancelamento foi recebida.
+
+
+Condições: Ordem deve estar cancelada.
+
+Resultado Esperado: O Simplifique mostra a notificação com o "Motivo de Cancelamento" apropriado.
+
+
+
+Teste 7: Resposta do Sistema Após Cancelamento
+Objetivo: Testar resposta correta do sistema após cancelamento.
+
+
+Cenário:  
+
+
+Estado Inicial: Ordem foi recentemente cancelada.
+
+Ações:  
+Aguardar a resposta do sistema.
+
+
+Condições: Cancelamento deve ter acontecido.
+
+Resultado Esperado: O sistema retorna status "Cancelado" e "Motivo de Cancelamento" preenchido corretamente.
+
+
+
+Observação: Testes de Visibilidade de Elementos da Interface
+Teste 8: Verificar Visibilidade do Botão de Cancelamento
+Objetivo: Verificar se o botão de cancelamento está visível na interface do usuário.
+
+
+Cenário:  
+
+
+Estado Inicial: Usuário acessa a ordem com status "Enviado".
+
+Ações:  
+Acessar os detalhes da ordem.
+
+
+Condições: O usuário deve ter permissão para cancelar a ordem.
+
+Resultado Esperado: O botão de cancelamento está visível na interface.
+
+
+
+Teste 9: Verificar Visibilidade do Campo "Motivo de Cancelamento"
+Objetivo: Confirmar que o campo "Motivo de Cancelamento" está visível durante o cancelamento.
+
+
+Cenário:  
+
+
+Estado Inicial: Usuário inicia o cancelamento da ordem.
+
+Ações:  
+Acessar a tela de cancelamento.
+
+
+Condições: A ordem está apta a ser cancelada.
+
+Resultado Esperado: O campo "Motivo de Cancelamento" é exibido na tela de cancelamento.
+
