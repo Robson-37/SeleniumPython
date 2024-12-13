@@ -42,3 +42,7 @@ class TesteSelenium(unittest.TestCase):  # Define uma classe de teste que herda 
 
 if __name__ == '__main__':  # Verifica se o script está sendo executado diretamente.
     unittest.main()  # Executa todos os testes definidos na classe de teste.
+
+
+    # Gaia   
+    # https://axet.nttdata.com/gaia/
