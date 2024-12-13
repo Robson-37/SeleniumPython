@@ -46,3 +46,6 @@ if __name__ == '__main__':  # Verifica se o script está sendo executado diretam
 
     # Gaia   
     # https://axet.nttdata.com/gaia/
+
+    # Usuario: rpersilv@emeal.nttdata.com
+    # Senha:   Okta
